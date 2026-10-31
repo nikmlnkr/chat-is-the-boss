@@ -1,0 +1,3 @@
+import {build} from 'esbuild';import {readFile,writeFile,copyFile} from 'node:fs/promises';
+const result=await build({entryPoints:['src/game.js'],bundle:true,minify:true,format:'iife',write:false,legalComments:'inline'});
+let html=await readFile('index.html','utf8');html=html.replace(/<script id="game-bundle">[\s\S]*?<\/script>/,'<!-- GAME_BUNDLE -->');html=html.replace('<!-- GAME_BUNDLE -->',()=>'<script id="game-bundle">'+result.outputFiles[0].text.replaceAll('</script','<\\/script')+'</script>');await writeFile('index.html',html);await copyFile('node_modules/three/LICENSE','docs/THREE-LICENSE.txt');console.log('Full 3D arena bundled');

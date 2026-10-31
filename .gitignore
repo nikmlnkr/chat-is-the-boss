@@ -1,0 +1,11 @@
+.env
+node_modules/
+playtest-out/
+
+.firebase/
+firebase-debug.log*
+
+recordings/
+
+.DS_Store
+*.log

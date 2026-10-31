@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "public": "hosting",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [{"source": "**", "run": {"serviceId": "chat-is-the-boss", "region": "us-central1"}}]
+  }
+}
